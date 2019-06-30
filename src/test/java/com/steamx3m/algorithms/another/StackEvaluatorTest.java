@@ -10,6 +10,7 @@ public class StackEvaluatorTest {
     public void checkResults() {
         StackEvaluator stackEvaluator = new StackEvaluator();
 
+
         double result = stackEvaluator.compute("( 1 + 1 )");
         assertEquals(2, result, 0.0001d);
 
