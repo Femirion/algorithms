@@ -17,18 +17,15 @@ public class StackTest {
             integerStack.pop();
         }
 
-        assertEquals(integerStack.toString(), "Stack{array=[0, 1, 2, 3, 4], size=0}");
+        assertEquals(integerStack.toString(), "Stack{size=5, top=0, array=[null, null, null, null, null]}");
     }
-
-
 
     @Test
     public void pushNoOneElements() {
         Stack<Double> doubleStack = new Stack<>();
 
-        assertEquals(doubleStack.toString(), "Stack{array=[null, null, null, null, null, null, null, null, null, null], size=0}");
+        assertEquals(doubleStack.toString(), "Stack{size=10, top=0, array=[null, null, null, null, null, null, null, null, null, null]}");
     }
-
 
     @Test
     public void pushThreeElements() {
@@ -37,7 +34,8 @@ public class StackTest {
         integerStack.push(2);
         integerStack.push(3);
 
-        assertEquals(integerStack.toString(), "Stack{array=[1, 2, 3, null, null, null, null, null, null, null], size=3}");
+        assertEquals(integerStack.toString(), "Stack{size=10, top=3," +
+                " array=[1, 2, 3, null, null, null, null, null, null, null]}");
     }
 
     @Test
@@ -55,8 +53,8 @@ public class StackTest {
         stringStack.push("10");
         stringStack.push("11");
 
-        assertEquals(stringStack.toString(), "Stack{" +
-                "array=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, null, null, null, null, null, null, null, null, null], size=11}");
+        assertEquals(stringStack.toString(), "Stack{size=20, top=11," +
+                " array=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, null, null, null, null, null, null, null, null, null]}");
     }
 
     @Test
@@ -68,15 +66,15 @@ public class StackTest {
 
         int popElement = integerStack.pop();
         assertEquals(3, popElement);
-        assertEquals(integerStack.toString(), "Stack{array=[1, 2, 3], size=2}");
+        assertEquals(integerStack.toString(), "Stack{size=3, top=2, array=[1, 2, null]}");
 
         popElement = integerStack.pop();
         assertEquals(2, popElement);
-        assertEquals(integerStack.toString(), "Stack{array=[1, 2, 3], size=1}");
+        assertEquals(integerStack.toString(), "Stack{size=3, top=1, array=[1, null, null]}");
 
         popElement = integerStack.pop();
         assertEquals(1, popElement);
-        assertEquals(integerStack.toString(), "Stack{array=[1, 2, 3], size=0}");
+        assertEquals(integerStack.toString(), "Stack{size=3, top=0, array=[null, null, null]}");
 
         try {
             popElement = integerStack.pop();
@@ -101,8 +99,7 @@ public class StackTest {
         }
 
 
-        assertEquals(integerStack.toString(), "Stack{" +
-                "array=[0, 1, 2, 3, 4], size=0}");
+        assertEquals(integerStack.toString(), "Stack{size=5, top=0, array=[null, null, null, null, null]}");
     }
 
 

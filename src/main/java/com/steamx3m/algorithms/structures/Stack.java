@@ -11,7 +11,7 @@ public class Stack<T> {
 
     private static final int DEFAULT_CAPACITY = 10;
     private T[] array;
-    private int size = 0;
+    private int top = 0;
 
     /**
      * Конструктор с указанием начальной вместительности
@@ -37,13 +37,12 @@ public class Stack<T> {
      * @param element добавляемый элемент
      */
     public void push(T element) {
-        if (size >= array.length) {
+        if (top >= array.length) {
             resize(array.length * 2);
-            array[size++] = element;
+            array[top++] = element;
         } else {
-            array[size++] = element;
+            array[top++] = element;
         }
-
     }
 
     /**
@@ -51,24 +50,29 @@ public class Stack<T> {
      * @return верхний элемент или если стек пуст то ошибка
      */
     public T pop() {
-        if (size == 0) {
+        if (top == 0) {
             throw new NoSuchElementException("There are no elements");
 
         }
 
-        if (size < array.length / 4) {
+        if (top < array.length / 4) {
             resize(array.length / 2);
         }
 
-        // вычитаем 1 тк нумерация с 0
-        return array[(size--) - 1];
+        top--;
+        T element = array[top];
+        // установим null чтобы не было утечек памяти
+        array[top] = null;
+
+        return element;
     }
 
     @Override
     public String toString() {
         return "Stack{" +
-                "array=" + Arrays.toString(array) +
-                ", size=" + size +
+                "size=" + array.length +
+                ", top=" + top +
+                ", array=" + Arrays.toString(array) +
                 '}';
     }
 
