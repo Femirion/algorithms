@@ -2,6 +2,8 @@ package com.steamx3m.algorithms.structures;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.*;
 
 public class StackTest {
@@ -80,9 +82,17 @@ public class StackTest {
             popElement = integerStack.pop();
             // недостижимое место!
             fail("что-то пошло не так!");
-        } catch (RuntimeException ex) {
+        } catch (NoSuchElementException ex) {
             assertEquals("There are no elements", ex.getMessage());
         }
+
+        // добавим еще один элемент. вдруг после опустошения стека что-то сломалось
+        integerStack.push(4);
+        assertEquals(integerStack.toString(), "Stack{size=3, top=1, array=[4, null, null]}");
+        // прверим что вытаскиваем этот элемент верно
+        popElement = integerStack.pop();
+        assertEquals(4, popElement);
+        assertEquals(integerStack.toString(), "Stack{size=3, top=0, array=[null, null, null]}");
     }
 
     @Test
