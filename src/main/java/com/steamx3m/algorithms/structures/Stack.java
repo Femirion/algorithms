@@ -1,41 +1,34 @@
 package com.steamx3m.algorithms.structures;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 /**
  * Стек для любвых элементов
- * @param <T> тип дженерика
+ * @param <T> тип элементов стека
  */
 public class Stack<T> {
 
     private static final int DEFAULT_CAPACITY = 10;
     private T[] array;
     private int size = 0;
-    private final String className;
 
     /**
-     * Конструктор с классом и начальной вместительностью
+     * Конструктор с указанием начальной вместительности
      *
-     * @param clazz класс
      * @param capacity вместительность
      */
     @SuppressWarnings("There is not normal way for creating generic arrays")
-    public Stack(Class clazz, int capacity) {
-        array = (T[]) Array.newInstance(clazz, capacity);
-        className = clazz.getSimpleName();
+    public Stack(int capacity) {
+        array = (T[]) new Object[capacity];
     }
 
     /**
-     * Конструктор с классом и начальной вместительностью.
-     * По дефолту размер 10
-     *
-     * @param clazz класс
+     * Конструктор c дефолтным размером = 10
      */
     @SuppressWarnings("There is not normal way for creating generic arrays")
-    public Stack(Class clazz) {
-        array = (T[]) Array.newInstance(clazz, DEFAULT_CAPACITY);
-        className = clazz.getSimpleName();
+    public Stack() {
+        array = (T[]) new Object[DEFAULT_CAPACITY];
     }
 
     /**
@@ -45,10 +38,8 @@ public class Stack<T> {
      */
     public void push(T element) {
         if (size >= array.length) {
-            int currentPosition = size;
-            size++;
-            array = Arrays.copyOf(array, size * 2);
-            array[currentPosition++] = element;
+            resize(array.length * 2);
+            array[size++] = element;
         } else {
             array[size++] = element;
         }
@@ -61,13 +52,13 @@ public class Stack<T> {
      */
     public T pop() {
         if (size == 0) {
-            // нужно создать свое исключение и бросать его
-            throw new RuntimeException("There are no elements");
+            throw new NoSuchElementException("There are no elements");
 
         }
 
-        // можно добавить автозжатие стека, если внутренний массив будет рассчитан
-        // под 100 элементов, а pop вызвали 90 раз
+        if (size < array.length / 4) {
+            resize(array.length / 2);
+        }
 
         // вычитаем 1 тк нумерация с 0
         return array[(size--) - 1];
@@ -76,9 +67,12 @@ public class Stack<T> {
     @Override
     public String toString() {
         return "Stack{" +
-                "className=" + className +
-                " array=" + Arrays.toString(array) +
+                "array=" + Arrays.toString(array) +
                 ", size=" + size +
                 '}';
+    }
+
+    private void resize(int newSize) {
+        array = Arrays.copyOf(array, newSize);
     }
 }

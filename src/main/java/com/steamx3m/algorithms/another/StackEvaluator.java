@@ -29,11 +29,11 @@ public class StackEvaluator {
     /**
      * стек операций
      */
-    private final Stack<String> ops = new Stack<>(String.class);
+    private final Stack<String> ops = new Stack<>();
     /**
      * стек значений
      */
-    private final Stack<Double> vals = new Stack<>(Double.class);
+    private final Stack<Double> vals = new Stack<>();
 
     /**
      * Вычислить значение
