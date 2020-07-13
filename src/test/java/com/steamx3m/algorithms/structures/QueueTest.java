@@ -4,7 +4,8 @@ import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class QueueTest {
 
@@ -90,7 +91,9 @@ public class QueueTest {
         for (int i = 0; i < 11; i++) {
             integerQueue.push(i);
         }
-        assertEquals(integerQueue.toString(), "Queue{size=12, head=11, tail=0, array=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, null]}");
+        assertEquals(integerQueue
+                             .toString(), "Queue{size=12, head=11, tail=0, array=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, " +
+                "null]}");
 
         for (int i = 0; i < 11; i++) {
             integerQueue.poll();
