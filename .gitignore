@@ -1,9 +1,10 @@
-/out/
-/logs/
-/.idea/
-/.gradle/
-/gradle/
-
+HELP.md
+target/
+.mvn
+mvnw
+mvnw.cmd
+!**/src/main/**
+!**/src/test/**
 
 ### IntelliJ IDEA ###
 .idea

@@ -4,7 +4,8 @@ import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class StackTest {
 
@@ -19,14 +20,16 @@ public class StackTest {
             integerStack.pop();
         }
 
-        assertEquals(integerStack.toString(), "Stack{size=5, top=0, array=[null, null, null, null, null]}");
+        assertEquals(integerStack.toString(),
+                     "Stack{size=5, top=0, array=[null, null, null, null, null]}");
     }
 
     @Test
     public void pushNoOneElements() {
         Stack<Double> doubleStack = new Stack<>();
 
-        assertEquals(doubleStack.toString(), "Stack{size=10, top=0, array=[null, null, null, null, null, null, null, null, null, null]}");
+        assertEquals(doubleStack.toString(),
+                     "Stack{size=10, top=0, array=[null, null, null, null, null, null, null, null, null, null]}");
     }
 
     @Test
@@ -36,8 +39,8 @@ public class StackTest {
         integerStack.push(2);
         integerStack.push(3);
 
-        assertEquals(integerStack.toString(), "Stack{size=10, top=3," +
-                " array=[1, 2, 3, null, null, null, null, null, null, null]}");
+        assertEquals(integerStack.toString(),
+                     "Stack{size=10, top=3, array=[1, 2, 3, null, null, null, null, null, null, null]}");
     }
 
     @Test
@@ -55,8 +58,9 @@ public class StackTest {
         stringStack.push("10");
         stringStack.push("11");
 
-        assertEquals(stringStack.toString(), "Stack{size=20, top=11," +
-                " array=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, null, null, null, null, null, null, null, null, null]}");
+        assertEquals(stringStack.toString(),
+                     "Stack{size=20, top=11, " +
+                             "array=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, null, null, null, null, null, null, null, null, null]}");
     }
 
     @Test
