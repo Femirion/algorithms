@@ -7,9 +7,9 @@ import static com.steamx3m.algorithms.utils.TestUtils.isSortedArray;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
-public class BubbleSortTest {
+public class SelectionSortTest {
 
-    private BubbleSort subj = new BubbleSort();
+    private SelectionSort subj = new SelectionSort();
 
     @Test
     public void empty_array() {
