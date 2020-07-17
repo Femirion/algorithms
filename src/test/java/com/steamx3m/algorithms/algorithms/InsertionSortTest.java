@@ -10,8 +10,8 @@ import static com.steamx3m.algorithms.utils.TestUtils.isSortedArray;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
-public class BubbleSortTest {
-    private final BubbleSort subj = new BubbleSort();
+public class InsertionSortTest {
+    private final InsertionSort subj = new InsertionSort();
 
     @Test
     public void empty_array() {
